@@ -35,7 +35,7 @@ content_types_provided(Req, State) ->
   }.
 
 accept_json(Req0, State) ->
-  io:format("handling request. accept header is: ~s~n", [cowboy_req:header(<<"accept">>, Req0)]),
+%%  io:format("handling request. accept header is: ~s~n", [cowboy_req:header(<<"accept">>, Req0)]),
   case parse_route_params(Req0) of
     {ok, _Params} ->
       _Query = parse_query(cowboy_req:parse_qs(Req0)),
@@ -61,7 +61,7 @@ accept_json(Req0, State) ->
   end.
 
 provide_json(Req, State) ->
-  io:format("handling request. accept header is: ~s~n", [cowboy_req:header(<<"accept">>, Req)]),
+%%  io:format("handling request. accept header is: ~s~n", [cowboy_req:header(<<"accept">>, Req)]),
   {<<"{}">>, Req, State}.
 
 parse_query(Query) ->

@@ -41,7 +41,7 @@ TEST ?= hello-world
 # to a route in src/mega_rps_demo_app.erl.
 AC_ARGS_hello-world = $(HOST)/hello-world
 AC_ARGS_simple = $(HOST)/simple
-AC_ARGS_patch = -m PATCH -H 'content-type=application/json' -b '{}' $(HOST)/update-something/1/abc
+AC_ARGS_patch = -m PATCH -H 'content-type=application/json' -H 'accept=application/json' -b '{}' $(HOST)/update-something/1/abc
 
 AC_ARGS = $(AC_ARGS_$(TEST))
 
