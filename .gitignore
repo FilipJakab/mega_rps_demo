@@ -1,0 +1,39 @@
+# ---- Erlang ----
+# Compiled artifacts
+*.beam
+*.o
+ebin/
+*.plt
+erl_crash.dump
+
+# Dependencies and build tooling
+deps/
+_build/
+.erlang.mk/
+erlang.mk
+*.d
+
+# Releases (relx / erlang.mk)
+_rel/
+rel/example_project/
+*.rel
+*.script
+*.boot
+
+# rebar3
+.rebar3/
+rebar.lock
+
+# ---- npm / Node ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.pnpm-debug.log*
+
+# ---- Editors / OS ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
