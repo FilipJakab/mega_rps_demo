@@ -41,7 +41,11 @@ TEST ?= hello-world
 # to a route in src/mega_rps_demo_app.erl.
 AC_ARGS_hello-world = $(HOST)/hello-world
 AC_ARGS_simple = $(HOST)/simple
-AC_ARGS_patch = -m PATCH -H 'content-type=application/json' -H 'accept=application/json' -b '{}' $(HOST)/update-something/1/abc
+AC_ARGS_patch = -m PATCH \
+ -H 'content-type=application/json' \
+ -H 'accept=application/json' \
+ -b '{"foo1": "hello","foo2": "world","foo3": "another","foo4": "text with space","foo5": "something","foo6": "yes","foo7": "no","foo8": "eight","foo9": "nine","foo10": "ten"}' \
+ $(HOST)/update-something/12345/JohnJohnson?value1=some%20value&value2=123456-value
 
 AC_ARGS = $(AC_ARGS_$(TEST))
 
@@ -50,7 +54,7 @@ loadtest:
 ifeq ($(AC_ARGS),)
 	$(error Unknown TEST '$(TEST)'. Valid values: hello-world simple patch)
 endif
-	npm exec -c "autocannon -c $(CONNECTIONS) -d $(DURATION) -w $(WORKERS) $(AC_ARGS)"
+	npm exec --package autocannon -- autocannon -c $(CONNECTIONS) -d $(DURATION) -w $(WORKERS) $(AC_ARGS)
 
 # Run every endpoint's load test back to back.
 .PHONY: loadtest-all
